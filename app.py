@@ -17,14 +17,14 @@ from sophisticated_palette.utils import show_palette, model_dict, get_palette, \
 
 
 gallery_files = glob(os.path.join(".", "images", "*"))
-gallery_dict = {image_path.split("/")[-1].split(".")[-2].replace("-", " "): image_path
+gallery_dict = {image_path.split('\\')[-1].split('.')[-2].replace('-', ' '): image_path
     for image_path in gallery_files}
+print(gallery_dict)
 
 st.image("logo.jpg")
 st.sidebar.title("Sophisticated Palette 🎨")
 st.sidebar.caption("Tell your data story with style.")
-st.sidebar.markdown("Made by [Siavash Yasini](https://www.linkedin.com/in/siavash-yasini/)")
-st.sidebar.caption("Look behind the scenes of Sophisticated Palette [here](https://blog.streamlit.io/create-a-color-palette-from-any-image/).")
+st.sidebar.markdown("Made by [Artist Dhwani](https://www.linkedin.com/in/dhwani-suthar/)")
 st.sidebar.markdown("---")
 
 toggle = st.sidebar.checkbox("Toggle Update", value=True, help="Continuously update the pallete with every change in the app.")
@@ -218,9 +218,9 @@ if click or toggle:
 else:
     st.info("👈  Click on 'Find Palette' ot turn on 'Toggle Update' to see the color palette.")
 
-st.sidebar.success(print_praise())   
-st.sidebar.write("---\n")
-st.sidebar.caption("""You can check out the source code [here](https://github.com/syasini/sophisticated_palette).
-                      The `matplotlib` and `plotly` code snippets have been borrowed from [here](https://matplotlib.org/stable/users/prev_whats_new/dflt_style_changes.html) and [here](https://stackoverflow.com/questions/63011674/plotly-how-to-change-the-default-color-pallete-in-plotly).""")
-st.sidebar.write("---\n")
+# st.sidebar.success(print_praise())   
+# st.sidebar.write("---\n")
+# st.sidebar.caption("""You can check out the source code [here](https://github.com/syasini/sophisticated_palette).
+#                       The `matplotlib` and `plotly` code snippets have been borrowed from [here](https://matplotlib.org/stable/users/prev_whats_new/dflt_style_changes.html) and [here](https://stackoverflow.com/questions/63011674/plotly-how-to-change-the-default-color-pallete-in-plotly).""")
+# st.sidebar.write("---\n")
 
