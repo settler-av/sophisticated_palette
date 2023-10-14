@@ -17,7 +17,7 @@ from sophisticated_palette.utils import show_palette, model_dict, get_palette, \
 
 
 gallery_files = glob(os.path.join(".", "images", "*"))
-gallery_dict = {image_path.split('\\')[-1].split('.')[-2].replace('-', ' '): image_path
+gallery_dict = {image_path.split('/')[-1].split('.')[-2].replace('-', ' '): image_path
     for image_path in gallery_files}
 print(gallery_dict)
 
