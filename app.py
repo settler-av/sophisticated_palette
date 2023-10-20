@@ -138,8 +138,8 @@ if click or toggle:
     df_rgb = get_df_rgb(img, sample_size)
 
     # (optional for later)
-    plot_rgb_3d(df_rgb) 
-    plot_hsv_3d(df_rgb) 
+    # plot_rgb_3d(df_rgb) 
+    # plot_hsv_3d(df_rgb) 
 
     # calculate the RGB palette and cache it to session_state
     st.session_state["palette_rgb"] = get_palette(df_rgb, model_name, palette_size, sort_func=sort_func)
