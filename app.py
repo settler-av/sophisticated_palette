@@ -37,22 +37,22 @@ print(gallery_dict)
 
 # Image Enhancement
 enhancement_categories = enhancement_range.keys()
-# enh_expander = st.sidebar.expander("Image Enhancements", expanded=False)
-# with enh_expander:
+enh_expander = st.sidebar.expander("Image Enhancements", expanded=False)
+with enh_expander:
     
-#     if st.button("reset"):
-#         for cat in enhancement_categories:
-#             if f"{cat}_enhancement" in st.session_state:
-#                 st.session_state[f"{cat}_enhancement"] = 1.0
-# enhancement_factor_dict = {
-#     cat: enh_expander.slider(f"{cat} Enhancement", 
-#                             value=1., 
-#                             min_value=enhancement_range[cat][0], 
-#                             max_value=enhancement_range[cat][1], 
-#                             step=enhancement_range[cat][2],
-#                             key=f"{cat}_enhancement")
-#     for cat in enhancement_categories
-# }
+    if st.button("reset"):
+        for cat in enhancement_categories:
+            if f"{cat}_enhancement" in st.session_state:
+                st.session_state[f"{cat}_enhancement"] = 1.0
+enhancement_factor_dict = {
+    cat: enh_expander.slider(f"{cat} Enhancement", 
+                            value=1., 
+                            min_value=enhancement_range[cat][0], 
+                            max_value=enhancement_range[cat][1], 
+                            step=enhancement_range[cat][2],
+                            key=f"{cat}_enhancement")
+    for cat in enhancement_categories
+}
 # enh_expander.info("**Try the following**\n\nColor Enhancements = 2.6\n\nContrast Enhancements = 1.1\n\nBrightness Enhancements = 1.1")
 
 # Clustering Model 
