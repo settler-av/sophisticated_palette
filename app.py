@@ -21,19 +21,19 @@ gallery_dict = {image_path.split('/')[-1].split('.')[-2].replace('-', ' '): imag
     for image_path in gallery_files}
 print(gallery_dict)
 
-# st.image("logo.jpg")
-# st.sidebar.title("Palette Generator")
-# st.sidebar.caption("Tell your data story with style.")
-# st.sidebar.markdown("Made by [Artist Dhwani](https://www.linkedin.com/in/dhwani-suthar/)")
-# st.sidebar.markdown("---")
+st.image("logo.jpg")
+st.sidebar.title("Palette Generator")
+st.sidebar.caption("Tell your data story with style.")
+st.sidebar.markdown("Made by [Artist Dhwani](https://www.linkedin.com/in/dhwani-suthar/)")
+st.sidebar.markdown("---")
 
-# toggle = st.sidebar.checkbox("Toggle Update", value=True, help="Continuously update the pallete with every change in the app.")
-# click = st.sidebar.button("Find Palette", disabled=bool(toggle))
+toggle = st.sidebar.checkbox("Toggle Update", value=True, help="Continuously update the pallete with every change in the app.")
+click = st.sidebar.button("Find Palette", disabled=bool(toggle))
 
-# st.sidebar.markdown("---")
-# st.sidebar.header("Settings")
-# palette_size = int(st.sidebar.number_input("palette size", min_value=1, max_value=20, value=5, step=1, help="Number of colors to infer from the image."))
-# sample_size = int(st.sidebar.number_input("sample size", min_value=5, max_value=3000, value=500, step=500, help="Number of sample pixels to pick from the image."))
+st.sidebar.markdown("---")
+st.sidebar.header("Settings")
+palette_size = int(st.sidebar.number_input("palette size", min_value=1, max_value=20, value=5, step=1, help="Number of colors to infer from the image."))
+sample_size = int(st.sidebar.number_input("sample size", min_value=5, max_value=3000, value=500, step=500, help="Number of sample pixels to pick from the image."))
 
 # Image Enhancement
 enhancement_categories = enhancement_range.keys()
@@ -53,19 +53,19 @@ enhancement_factor_dict = {
                             key=f"{cat}_enhancement")
     for cat in enhancement_categories
 }
-# enh_expander.info("**Try the following**\n\nColor Enhancements = 2.6\n\nContrast Enhancements = 1.1\n\nBrightness Enhancements = 1.1")
+enh_expander.info("**Try the following**\n\nColor Enhancements = 2.6\n\nContrast Enhancements = 1.1\n\nBrightness Enhancements = 1.1")
 
 # Clustering Model 
-# model_name = st.sidebar.selectbox("machine learning model", model_dict.keys(), help="Machine Learning model to use for clustering pixels and colors together.")
-# sklearn_info = st.sidebar.empty()
+model_name = st.sidebar.selectbox("machine learning model", model_dict.keys(), help="Machine Learning model to use for clustering pixels and colors together.")
+sklearn_info = st.sidebar.empty()
 
-# sort_options = sorted(list(sort_func_dict.keys()) + [key + "_r" for key in sort_func_dict.keys() if key!="random"])
-# sort_func = st.sidebar.selectbox("palette sort function", options=sort_options, index=5)
+sort_options = sorted(list(sort_func_dict.keys()) + [key + "_r" for key in sort_func_dict.keys() if key!="random"])
+sort_func = st.sidebar.selectbox("palette sort function", options=sort_options, index=5)
 
 # Random Number Seed
-# seed = int(st.sidebar.number_input("random seed", value=42, help="Seed used for all random samplings."))
-# np.random.seed(seed)
-# st.sidebar.markdown("---")
+seed = int(st.sidebar.number_input("random seed", value=42, help="Seed used for all random samplings."))
+np.random.seed(seed)
+st.sidebar.markdown("---")
 
 
 # =======
@@ -102,10 +102,10 @@ with url_tab:
     
     # FIXME: the button is a bit buggy, but it's worth fixing this later
 
-    # url_reset = st.button("Clear URL", key="url_reset")
-    # if url_reset and "image_url" in st.session_state:
-    #     st.session_state["image_url"] = ""
-    #     st.write(st.session_state["image_url"])
+    url_reset = st.button("Clear URL", key="url_reset")
+    if url_reset and "image_url" in st.session_state:
+        st.session_state["image_url"] = ""
+        st.write(st.session_state["image_url"])
 
     url = url_text.text_input("Image URL", key="image_url")
     
@@ -138,8 +138,8 @@ if click or toggle:
     df_rgb = get_df_rgb(img, sample_size)
 
     # (optional for later)
-    # plot_rgb_3d(df_rgb) 
-    # plot_hsv_3d(df_rgb) 
+    plot_rgb_3d(df_rgb) 
+    plot_hsv_3d(df_rgb) 
 
     # calculate the RGB palette and cache it to session_state
     st.session_state["palette_rgb"] = get_palette(df_rgb, model_name, palette_size, sort_func=sort_func)
@@ -218,9 +218,9 @@ if click or toggle:
 else:
     st.info("👈  Click on 'Find Palette' ot turn on 'Toggle Update' to see the color palette.")
 
-# st.sidebar.success(print_praise())   
-# st.sidebar.write("---\n")
-# st.sidebar.caption("""You can check out the source code [here](https://github.com/syasini/sophisticated_palette).
-#                       The `matplotlib` and `plotly` code snippets have been borrowed from [here](https://matplotlib.org/stable/users/prev_whats_new/dflt_style_changes.html) and [here](https://stackoverflow.com/questions/63011674/plotly-how-to-change-the-default-color-pallete-in-plotly).""")
-# st.sidebar.write("---\n")
+st.sidebar.success(print_praise())   
+st.sidebar.write("---\n")
+st.sidebar.caption("""You can check out the source code [here](https://github.com/syasini/sophisticated_palette).
+                      The `matplotlib` and `plotly` code snippets have been borrowed from [here](https://matplotlib.org/stable/users/prev_whats_new/dflt_style_changes.html) and [here](https://stackoverflow.com/questions/63011674/plotly-how-to-change-the-default-color-pallete-in-plotly).""")
+st.sidebar.write("---\n")
 
