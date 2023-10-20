@@ -36,7 +36,7 @@ print(gallery_dict)
 # sample_size = int(st.sidebar.number_input("sample size", min_value=5, max_value=3000, value=500, step=500, help="Number of sample pixels to pick from the image."))
 
 # Image Enhancement
-# enhancement_categories = enhancement_range.keys()
+enhancement_categories = enhancement_range.keys()
 # enh_expander = st.sidebar.expander("Image Enhancements", expanded=False)
 # with enh_expander:
     
